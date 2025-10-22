@@ -1,0 +1,11 @@
+# Python dependencies for GoFlow Prompt Generator
+# Install with: pip install -r requirements.txt
+
+# Google Gemini API for AI content generation
+google-generativeai>=0.8.5
+
+# Optional: For better error handling and retries
+tenacity>=9.1.2
+
+# Optional: For progress bars
+tqdm>=4.67.1

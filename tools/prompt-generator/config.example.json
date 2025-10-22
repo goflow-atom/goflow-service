@@ -1,0 +1,11 @@
+{
+  "api_key": "YOUR_GEMINI_API_KEY_HERE",
+  "model_name": "gemini-2.5-flash",
+  "template_path": "docs/tasks/03_PROMPT_IMPLEMENTATION.md",
+  "roadmap_path": "docs/tasks/01_IMPLEMENTATION_ROADMAP.md",
+  "output_dir": "docs/tasks/prompts",
+  "temperature": 0.7,
+  "max_tokens": 8000,
+  "timeout": 60
+}
+

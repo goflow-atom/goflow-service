@@ -4,18 +4,46 @@ Thank you for your interest in contributing to GoFlow! This document provides gu
 
 ## Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
-- [Getting Started](#getting-started)
-- [How to Contribute](#how-to-contribute)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Suggesting Features](#suggesting-features)
-  - [Submitting Pull Requests](#submitting-pull-requests)
-- [Development Workflow](#development-workflow)
-- [Branch Naming Conventions](#branch-naming-conventions)
-- [Commit Message Guidelines](#commit-message-guidelines)
-- [Code Review Process](#code-review-process)
-- [Testing Requirements](#testing-requirements)
-- [Documentation](#documentation)
+- [Contributing to GoFlow](#contributing-to-goflow)
+  - [Table of Contents](#table-of-contents)
+  - [Code of Conduct](#code-of-conduct)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Setup Development Environment](#setup-development-environment)
+  - [How to Contribute](#how-to-contribute)
+    - [Reporting Bugs](#reporting-bugs)
+    - [Suggesting Features](#suggesting-features)
+    - [Submitting Pull Requests](#submitting-pull-requests)
+  - [Development Workflow](#development-workflow)
+    - [1. Sync with Upstream](#1-sync-with-upstream)
+    - [2. Create Feature Branch](#2-create-feature-branch)
+    - [3. Develop and Test](#3-develop-and-test)
+    - [4. Commit Changes](#4-commit-changes)
+    - [5. Push and Create PR](#5-push-and-create-pr)
+  - [Branch Naming Conventions](#branch-naming-conventions)
+  - [Commit Message Guidelines](#commit-message-guidelines)
+    - [Format](#format)
+    - [Types](#types)
+    - [Scope](#scope)
+    - [Examples](#examples)
+  - [Code Review Process](#code-review-process)
+    - [Pull Request Template](#pull-request-template)
+    - [Review Criteria](#review-criteria)
+    - [Review Process](#review-process)
+    - [Addressing Review Comments](#addressing-review-comments)
+  - [Testing Requirements](#testing-requirements)
+    - [Minimum Requirements](#minimum-requirements)
+    - [Running Tests](#running-tests)
+    - [Writing Tests](#writing-tests)
+  - [Documentation](#documentation)
+    - [Code Documentation](#code-documentation)
+    - [Documentation Files](#documentation-files)
+    - [API Documentation](#api-documentation)
+  - [Community](#community)
+    - [Communication Channels](#communication-channels)
+    - [Getting Help](#getting-help)
+    - [Recognition](#recognition)
+  - [License](#license)
 
 ## Code of Conduct
 
@@ -37,14 +65,14 @@ This project adheres to the [Contributor Covenant Code of Conduct](../../CODE_OF
 
 ```bash
 # Fork on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/goflow-service.git
+git clone https://github.com/goflow-atom/goflow-service-service.git
 cd goflow-service
 ```
 
 2. **Add upstream remote**
 
 ```bash
-git remote add upstream https://github.com/goflow/goflow-service.git
+git remote add upstream https://github.com/goflow-atom/goflow-service-service.git
 ```
 
 3. **Install dependencies**
@@ -514,8 +542,8 @@ Update relevant documentation when making changes:
 If you need help:
 
 1. Check the [documentation](../README.md)
-2. Search [existing issues](https://github.com/goflow/goflow-service/issues)
-3. Ask in [GitHub Discussions](https://github.com/goflow/goflow-service/discussions)
+2. Search [existing issues](https://github.com/goflow-atom/goflow-service-service/issues)
+3. Ask in [GitHub Discussions](https://github.com/goflow-atom/goflow-service-service/discussions)
 4. Join our [Slack channel](https://goflow.slack.com)
 
 ### Recognition
