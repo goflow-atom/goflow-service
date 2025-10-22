@@ -20,6 +20,9 @@ type Config struct {
 
 	// Application configuration
 	App AppConfig `json:"app" mapstructure:"app"`
+
+	// Authentication configuration
+	Auth AuthConfig `json:"auth" mapstructure:"auth"`
 }
 
 // ServerConfig holds HTTP server configuration.
@@ -52,6 +55,18 @@ type AppConfig struct {
 	Version string `json:"version" mapstructure:"version"`
 }
 
+// AuthConfig holds authentication and authorization configuration.
+type AuthConfig struct {
+	// JWTSecret is the secret key used to sign and verify JWT tokens
+	JWTSecret string `json:"jwt_secret" mapstructure:"jwt_secret"`
+	// JWTExpirationHours is the JWT token expiration time in hours
+	JWTExpirationHours int `json:"jwt_expiration_hours" mapstructure:"jwt_expiration_hours"`
+	// JWTIssuer is the issuer claim for JWT tokens
+	JWTIssuer string `json:"jwt_issuer" mapstructure:"jwt_issuer"`
+	// JWTAudience is the audience claim for JWT tokens
+	JWTAudience string `json:"jwt_audience" mapstructure:"jwt_audience"`
+}
+
 // Load loads configuration with the following precedence:
 //  1. Environment variables (highest priority)
 //  2. Configuration file from CONFIG_PATH or default locations
@@ -68,6 +83,10 @@ type AppConfig struct {
 //   - WRITE_TIMEOUT: Write timeout in seconds (default: 15)
 //   - IDLE_TIMEOUT: Idle timeout in seconds (default: 60)
 //   - SHUTDOWN_TIMEOUT: Shutdown timeout in seconds (default: 30)
+//   - JWT_SECRET: JWT signing secret (default: default-secret-change-in-production)
+//   - JWT_EXPIRATION_HOURS: JWT expiration in hours (default: 24)
+//   - JWT_ISSUER: JWT issuer claim (default: goflow-workflow-engine)
+//   - JWT_AUDIENCE: JWT audience claim (default: goflow-api)
 //
 // Returns:
 //   - *Config: Loaded configuration
@@ -121,6 +140,12 @@ func loadFromEnvWithDefaults() (*Config, error) {
 			LogLevel:    getEnv("LOG_LEVEL", "info"),
 			Version:     getEnv("APP_VERSION", "1.0.0"),
 		},
+		Auth: AuthConfig{
+			JWTSecret:          getEnv("JWT_SECRET", "default-secret-change-in-production"),
+			JWTExpirationHours: getEnvAsInt("JWT_EXPIRATION_HOURS", 24),
+			JWTIssuer:          getEnv("JWT_ISSUER", "goflow-workflow-engine"),
+			JWTAudience:        getEnv("JWT_AUDIENCE", "goflow-api"),
+		},
 	}
 
 	// Validate configuration
@@ -168,6 +193,19 @@ func (c *Config) Validate() error {
 	}
 	if !validLogLevels[c.App.LogLevel] {
 		return fmt.Errorf("invalid log level: %s (must be debug, info, warn, or error)", c.App.LogLevel)
+	}
+
+	// Validate JWT secret
+	if c.Auth.JWTSecret == "" {
+		return fmt.Errorf("JWT secret cannot be empty")
+	}
+	if c.Auth.JWTSecret == "default-secret-change-in-production" && c.App.Environment == "production" {
+		return fmt.Errorf("JWT secret must be changed in production environment")
+	}
+
+	// Validate JWT expiration
+	if c.Auth.JWTExpirationHours <= 0 {
+		return fmt.Errorf("JWT expiration hours must be greater than 0")
 	}
 
 	return nil

@@ -36,3 +36,19 @@ server:
   write_timeout: 15s
   idle_timeout: 60s
   shutdown_timeout: 30s
+
+# ============================================================================
+# Authentication & Authorization Configuration
+# ============================================================================
+auth:
+  # JWT secret key for signing tokens (MUST be changed in production)
+  jwt_secret: your-secret-key-change-this-in-production
+
+  # JWT token expiration time in hours
+  jwt_expiration_hours: 24
+
+  # JWT issuer claim (identifies who issued the token)
+  jwt_issuer: goflow-workflow-engine
+
+  # JWT audience claim (identifies who the token is intended for)
+  jwt_audience: goflow-api
