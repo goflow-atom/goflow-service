@@ -262,5 +262,5 @@ func main() {
 **Generated**: 2024-01-01
 **Source**: docs/swagger.yml
 **Framework**: Gin (github.com/gin-gonic/gin)
-**Go Version**: 1.21+
+**Go Version**: 1.24+
 

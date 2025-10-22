@@ -291,7 +291,7 @@ defer cleanup()
 
 ## Next Steps
 
-1. **INIT-004**: Configure Go version requirements (1.21+) in go.mod
+1. **INIT-004**: Configure Go version requirements (1.24+) in go.mod
 2. **GIN-001**: Initialize Gin router with proper mode configuration
 3. **GIN-005**: Configure Viper for YAML-based configuration
 4. **CONN-001**: Setup PostgreSQL connection with GORM

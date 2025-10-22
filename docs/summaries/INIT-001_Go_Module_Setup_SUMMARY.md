@@ -149,7 +149,7 @@ Created additional files beyond the original specification:
 - Comprehensive test files with 100% coverage
 
 ### Go Version
-The task specified Go 1.21+, and the implementation uses Go 1.21 as the minimum version in go.mod, though the system has Go 1.23.0 installed.
+The task specified Go 1.24+, and the implementation uses Go 1.24 as the minimum version in go.mod, though the system has Go 1.23.0 installed.
 
 ## Challenges and Solutions
 

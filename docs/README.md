@@ -35,7 +35,7 @@ GoFlow is a powerful, scalable workflow orchestration engine built in Go that en
 
 ### Prerequisites
 
-- Go 1.21 or higher
+- Go 1.24 or higher
 - PostgreSQL 14+
 - Redis 6+
 - Docker & Docker Compose (optional)
@@ -130,7 +130,7 @@ goflow-service/
 
 ## 🛠 Technology Stack
 
-- **Language**: Go 1.21+
+- **Language**: Go 1.24+
 - **Web Framework**: Gin (HTTP routing and middleware)
 - **Workflow Engine**: Inngest (durable execution)
 - **Database**: PostgreSQL 14+ (primary data store)

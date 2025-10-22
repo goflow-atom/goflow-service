@@ -1,0 +1,57 @@
+{
+  "default_deny": true,
+  "resources": {
+    "workflow": {
+      "name": "workflow",
+      "description": "Workflow definitions and templates",
+      "actions": {
+        "create": ["admin", "developer"],
+        "read": ["admin", "developer", "operator", "viewer"],
+        "update": ["admin", "developer"],
+        "delete": ["admin"],
+        "execute": ["admin", "developer", "operator"]
+      }
+    },
+    "execution": {
+      "name": "execution",
+      "description": "Workflow execution instances",
+      "actions": {
+        "create": ["admin", "developer", "operator"],
+        "read": ["admin", "developer", "operator", "viewer"],
+        "cancel": ["admin", "developer", "operator"],
+        "retry": ["admin", "developer", "operator"],
+        "delete": ["admin"]
+      }
+    },
+    "schedule": {
+      "name": "schedule",
+      "description": "Workflow schedules and triggers",
+      "actions": {
+        "create": ["admin", "developer"],
+        "read": ["admin", "developer", "operator", "viewer"],
+        "update": ["admin", "developer"],
+        "delete": ["admin", "developer"],
+        "enable": ["admin", "developer"],
+        "disable": ["admin", "developer"]
+      }
+    },
+    "log": {
+      "name": "log",
+      "description": "Execution logs and audit trails",
+      "actions": {
+        "read": ["admin", "developer", "operator", "viewer"]
+      }
+    },
+    "user": {
+      "name": "user",
+      "description": "User management",
+      "actions": {
+        "create": ["admin"],
+        "read": ["admin", "developer", "operator", "viewer"],
+        "update": ["admin"],
+        "delete": ["admin"]
+      }
+    }
+  }
+}
+

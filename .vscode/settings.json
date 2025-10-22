@@ -60,6 +60,7 @@
       "gosec",
       "gosimple",
       "GOSUMDB",
+      "gotenv",
       "govet",
       "hashlib",
       "hexdigest",

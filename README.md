@@ -6,7 +6,7 @@
 
 **A powerful, scalable workflow orchestration engine built in Go**
 
-[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://golang.org)
+[![Go Version](https://img.shields.io/badge/Go-1.24+-00ADD8?style=flat&logo=go)](https://golang.org)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Build Status](https://img.shields.io/github/workflow/status/goflow-atom/goflow-service/CI)](https://github.com/goflow-atom/goflow-service/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/goflow-atom/goflow-service)](https://goreportcard.com/report/github.com/goflow-atom/goflow-service)
@@ -91,7 +91,7 @@ GoFlow is a production-grade workflow orchestration engine that enables you to d
 
 ### Prerequisites
 
-- Go 1.21 or higher
+- Go 1.24 or higher
 - PostgreSQL 14+
 - Redis 6+
 - Docker & Docker Compose (optional)
@@ -231,7 +231,7 @@ See [Architecture Documentation](docs/architecture.md) for detailed information.
 
 ## 🛠️ Technology Stack
 
-- **Language**: Go 1.21+
+- **Language**: Go 1.24+
 - **Web Framework**: Gin (HTTP routing and middleware)
 - **Workflow Engine**: Inngest (durable execution)
 - **Database**: PostgreSQL 14+ (primary data store)

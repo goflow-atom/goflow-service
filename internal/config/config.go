@@ -65,6 +65,10 @@ type AuthConfig struct {
 	JWTIssuer string `json:"jwt_issuer" mapstructure:"jwt_issuer"`
 	// JWTAudience is the audience claim for JWT tokens
 	JWTAudience string `json:"jwt_audience" mapstructure:"jwt_audience"`
+	// PolicyConfigPath is the path to the authorization policy configuration file
+	PolicyConfigPath string `json:"policy_config_path" mapstructure:"policy_config_path"`
+	// DefaultDeny determines whether to deny access by default when no policy is found
+	DefaultDeny bool `json:"default_deny" mapstructure:"default_deny"`
 }
 
 // Load loads configuration with the following precedence:
@@ -87,6 +91,8 @@ type AuthConfig struct {
 //   - JWT_EXPIRATION_HOURS: JWT expiration in hours (default: 24)
 //   - JWT_ISSUER: JWT issuer claim (default: goflow-workflow-engine)
 //   - JWT_AUDIENCE: JWT audience claim (default: goflow-api)
+//   - AUTHZ_POLICY_CONFIG_PATH: Path to authorization policy config file (default: empty, uses default policy)
+//   - AUTHZ_DEFAULT_DENY: Default deny strategy for authorization (default: true)
 //
 // Returns:
 //   - *Config: Loaded configuration
@@ -145,6 +151,8 @@ func loadFromEnvWithDefaults() (*Config, error) {
 			JWTExpirationHours: getEnvAsInt("JWT_EXPIRATION_HOURS", 24),
 			JWTIssuer:          getEnv("JWT_ISSUER", "goflow-workflow-engine"),
 			JWTAudience:        getEnv("JWT_AUDIENCE", "goflow-api"),
+			PolicyConfigPath:   getEnv("AUTHZ_POLICY_CONFIG_PATH", ""),
+			DefaultDeny:        getEnvAsBool("AUTHZ_DEFAULT_DENY", true),
 		},
 	}
 
@@ -247,4 +255,19 @@ func getEnvAsDuration(key string, defaultValue int) time.Duration {
 	}
 
 	return time.Duration(value)
+}
+
+// getEnvAsBool retrieves an environment variable as a boolean or returns a default value.
+func getEnvAsBool(key string, defaultValue bool) bool {
+	valueStr := os.Getenv(key)
+	if valueStr == "" {
+		return defaultValue
+	}
+
+	value, err := strconv.ParseBool(valueStr)
+	if err != nil {
+		return defaultValue
+	}
+
+	return value
 }

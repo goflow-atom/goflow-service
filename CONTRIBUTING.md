@@ -21,7 +21,7 @@ This project and everyone participating in it is governed by the [GoFlow Code of
 
 ### Prerequisites
 
-- Go 1.21 or higher
+- Go 1.24 or higher
 - PostgreSQL 14+
 - Redis 6+
 - Docker & Docker Compose

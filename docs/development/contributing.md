@@ -53,7 +53,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](../../CODE_OF
 
 ### Prerequisites
 
-- Go 1.21 or higher
+- Go 1.24 or higher
 - Docker and Docker Compose
 - PostgreSQL 14+
 - Redis 6+
