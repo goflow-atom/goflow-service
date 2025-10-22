@@ -1,0 +1,38 @@
+# GoFlow Workflow Engine - Configuration File
+# This file contains the default configuration for the GoFlow Workflow Engine.
+# Environment variables will override these values.
+
+# ============================================================================
+# Application Configuration
+# ============================================================================
+app:
+  # Application name
+  name: goflow-workflow-engine
+
+  # Environment: development, staging, production, test
+  environment: development
+
+  # Log level: debug, info, warn, error
+  log_level: info
+
+  # Application version
+  version: 1.0.0
+
+# ============================================================================
+# HTTP Server Configuration
+# ============================================================================
+server:
+  # Server port
+  port: 8080
+
+  # Server host (0.0.0.0 for all interfaces, localhost for local only)
+  host: 0.0.0.0
+
+  # Gin mode: debug, release, test
+  mode: debug
+
+  # Server timeouts (duration format: e.g., "15s", "1m", "1h")
+  read_timeout: 15s
+  write_timeout: 15s
+  idle_timeout: 60s
+  shutdown_timeout: 30s

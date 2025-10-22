@@ -52,9 +52,13 @@ type AppConfig struct {
 	Version string `json:"version" mapstructure:"version"`
 }
 
-// Load loads configuration from environment variables with defaults.
+// Load loads configuration with the following precedence:
+//  1. Environment variables (highest priority)
+//  2. Configuration file from CONFIG_PATH or default locations
+//  3. Default values (lowest priority)
 //
 // Environment variables:
+//   - CONFIG_PATH: Path to config file (default: searches standard locations)
 //   - PORT: HTTP server port (default: 8080)
 //   - HOST: HTTP server host (default: 0.0.0.0)
 //   - GIN_MODE: Gin mode - debug, release, test (default: debug)
@@ -76,6 +80,31 @@ type AppConfig struct {
 //	    log.Fatal(err)
 //	}
 func Load() (*Config, error) {
+	// Check if config path is specified in environment
+	configPath := os.Getenv("CONFIG_PATH")
+
+	// If not specified, try to find config file in standard locations
+	if configPath == "" {
+		foundPath, err := FindConfigFile()
+		if err == nil {
+			configPath = foundPath
+		}
+	}
+
+	// If config file exists, load from file (with env override)
+	if configPath != "" {
+		if _, err := os.Stat(configPath); err == nil {
+			return LoadFromFile(configPath)
+		}
+	}
+
+	// Fall back to environment variables with defaults
+	return loadFromEnvWithDefaults()
+}
+
+// loadFromEnvWithDefaults loads configuration from environment variables with default values.
+// This is used as a fallback when no config file is found.
+func loadFromEnvWithDefaults() (*Config, error) {
 	config := &Config{
 		Server: ServerConfig{
 			Port:            getEnvAsInt("PORT", 8080),
