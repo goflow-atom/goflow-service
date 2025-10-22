@@ -154,7 +154,7 @@ The task specified Go 1.21+, and the implementation uses Go 1.21 as the minimum 
 ## Challenges and Solutions
 
 ### Challenge 1: Module Path Consistency
-**Problem**: Initial confusion about whether to use `github.com/GoFlow/GoFlow` or `github.com/goflow-atom/goflow-service` as the module path.
+**Problem**: Initial confusion about whether to use `github.com/goflow-atom/goflow-service` or `github.com/goflow-atom/goflow-service` as the module path.
 **Solution**: Confirmed with the user that `github.com/goflow-atom/goflow-service` is the correct module path and updated all files accordingly.
 
 ### Challenge 2: Empty Files in Project

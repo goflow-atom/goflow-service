@@ -441,17 +441,15 @@ class PromptGenerator:
                 logger.error("Could not find end of AI Implementation Prompt section")
                 return None
 
-            # Split into parts - we only need header and prompt section
-            header_section = template_content[:prompt_section_start]
+            # Extract only the prompt section (the content inside the markdown code block)
             prompt_section = template_content[prompt_section_start:prompt_end]
-            # footer_section is intentionally not used to reduce output size
 
-            # Step 3: Replace placeholders ONLY in the prompt section
+            # Step 3: Replace placeholders in the prompt section
             prompt_section = self._replace_basic_placeholders(prompt_section, task_info)
             prompt_section = self._generate_ai_content(prompt_section, task_info)
 
-            # Step 4: Reassemble with closing markdown block
-            final_content = header_section + prompt_section + "\n```\n"
+            # Step 4: Use only the prompt section as final content (no header/footer)
+            final_content = prompt_section.strip()
 
             # Step 5: Check 20,000 character limit
             MAX_LENGTH = 20000
