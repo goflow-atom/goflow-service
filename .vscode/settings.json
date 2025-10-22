@@ -36,6 +36,7 @@
       "generativeai",
       "generativelanguage",
       "Getenv",
+      "GOARCH",
       "goccy",
       "gocognit",
       "goconst",
