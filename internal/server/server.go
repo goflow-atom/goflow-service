@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/goflow-atom/goflow-service/internal/api/middleware"
 	"go.uber.org/zap"
 )
 
@@ -92,9 +93,15 @@ func New(config Config, logger *zap.Logger) (*Server, error) {
 	// Create Gin router
 	router := gin.New()
 
-	// Add default middleware
+	// Add middleware in order:
+	// 1. Request ID - must be first to ensure all logs have request ID
+	router.Use(middleware.RequestIDMiddleware())
+	// 2. Logger - logs all requests with request ID
+	router.Use(middleware.LoggerMiddleware(logger))
+	// 3. Error Handler - catches panics and errors, returns consistent JSON
+	router.Use(middleware.ErrorHandler(logger))
+	// 4. Recovery - Gin's built-in recovery as fallback
 	router.Use(gin.Recovery())
-	router.Use(ginLogger(logger))
 
 	return &Server{
 		config: config,

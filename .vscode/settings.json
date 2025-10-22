@@ -2,6 +2,7 @@
     "cSpell.words": [
       "addgroup",
       "adduser",
+      "afero",
       "aquasecurity",
       "Atoi",
       "Autovacuum",
@@ -29,6 +30,7 @@
       "errorlint",
       "exportloopref",
       "filebeat",
+      "fsnotify",
       "funlen",
       "genai",
       "generativeai",
@@ -86,6 +88,7 @@
       "nolintlint",
       "objx",
       "parentbased",
+      "pflag",
       "pmezard",
       "pprof",
       "prealloc",
@@ -99,11 +102,13 @@
       "robfig",
       "rolebinding",
       "runbooks",
+      "sagikazarmark",
       "sarif",
       "SASL",
       "schemaname",
       "sdist",
       "signup",
+      "sourcegraph",
       "sqlx",
       "sslmode",
       "standups",
@@ -111,6 +116,7 @@
       "strconv",
       "stretchr",
       "structcheck",
+      "subosito",
       "Subtests",
       "tablename",
       "testdata",
@@ -130,6 +136,7 @@
       "vasile",
       "venv",
       "wastedassign",
-      "whsec"
+      "whsec",
+      "wireinject"
     ]
 }

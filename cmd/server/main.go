@@ -15,28 +15,29 @@ import (
 
 	"github.com/goflow-atom/goflow-service/internal/config"
 	"github.com/goflow-atom/goflow-service/internal/core"
-	"github.com/goflow-atom/goflow-service/internal/server"
 	"go.uber.org/zap"
 )
 
 func main() {
-	// Load configuration from environment variables
+	// Initialize application with Wire dependency injection
+	srv, cleanup, err := InitializeApplication()
+	if err != nil {
+		log.Fatalf("Failed to initialize application: %v", err)
+	}
+	defer cleanup()
+
+	// Get configuration and logger for logging version info
 	cfg, err := config.Load()
 	if err != nil {
 		log.Fatalf("Failed to load configuration: %v", err)
 	}
 
-	// Initialize logger based on environment
 	var logger *zap.Logger
 	if cfg.App.Environment == "production" {
-		logger, err = zap.NewProduction()
+		logger, _ = zap.NewProduction()
 	} else {
-		logger, err = zap.NewDevelopment()
+		logger, _ = zap.NewDevelopment()
 	}
-	if err != nil {
-		log.Fatalf("Failed to initialize logger: %v", err)
-	}
-	defer logger.Sync()
 
 	// Print version information
 	versionInfo := core.GetVersionInfo()
@@ -47,26 +48,6 @@ func main() {
 		zap.String("environment", cfg.App.Environment),
 		zap.Int("port", cfg.Server.Port),
 	)
-
-	// Create server configuration
-	serverConfig := server.Config{
-		Port:            cfg.Server.Port,
-		Host:            cfg.Server.Host,
-		Mode:            cfg.Server.Mode,
-		ReadTimeout:     cfg.Server.ReadTimeout,
-		WriteTimeout:    cfg.Server.WriteTimeout,
-		IdleTimeout:     cfg.Server.IdleTimeout,
-		ShutdownTimeout: cfg.Server.ShutdownTimeout,
-	}
-
-	// Create HTTP server
-	srv, err := server.New(serverConfig, logger)
-	if err != nil {
-		logger.Fatal("Failed to create server", zap.Error(err))
-	}
-
-	// Setup routes
-	srv.SetupRoutes()
 
 	// Create context for graceful shutdown
 	ctx, cancel := context.WithCancel(context.Background())
