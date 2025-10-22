@@ -1,0 +1,99 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Go source files
+*.go text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# SQL files
+*.sql text eol=lf
+
+# YAML files
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# TOML files
+*.toml text eol=lf
+
+# Makefile
+Makefile text eol=lf
+
+# Dockerfile
+Dockerfile text eol=lf
+Dockerfile.* text eol=lf
+
+# Protocol Buffers
+*.proto text eol=lf
+
+# Configuration files
+.editorconfig text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Documentation
+*.txt text eol=lf
+LICENSE text eol=lf
+AUTHORS text eol=lf
+CHANGELOG text eol=lf
+CONTRIBUTING text eol=lf
+README text eol=lf
+
+# Binary files
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.a binary
+*.o binary
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+*.bz2 binary
+*.7z binary
+*.rar binary
+
+# Fonts
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+
+# Other binary formats
+*.pdf binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+
+# Go module files
+go.mod text eol=lf
+go.sum text eol=lf
+
+# Linguist overrides for better language detection
+*.go linguist-language=Go
+*.proto linguist-language=Protocol-Buffer
+docs/** linguist-documentation
+examples/** linguist-documentation
+test/** linguist-vendored
+vendor/** linguist-vendored
+
+# Git LFS (Large File Storage) - if needed in future
+# *.bin filter=lfs diff=lfs merge=lfs -text

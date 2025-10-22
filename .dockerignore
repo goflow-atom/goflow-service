@@ -1,0 +1,112 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+.github
+
+# Documentation
+*.md
+docs/
+examples/
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build artifacts
+tmp/
+bin/
+dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test files
+test/
+*_test.go
+*.test
+coverage.out
+coverage.html
+*.prof
+
+# Configuration files (use build args or env vars instead)
+.env
+.env.*
+*.local
+configs/*.local.yaml
+
+# Logs
+logs/
+*.log
+
+# Dependencies (will be downloaded during build)
+vendor/
+
+# Tools
+tools/
+
+# Deployment files
+deployments/
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Air hot-reload
+.air.toml
+
+# Makefile
+Makefile
+
+# License and contributing
+LICENSE
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+SECURITY.md
+CHANGELOG.md
+
+# API documentation
+api/
+swagger.yml
+openapi.yaml
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Kubernetes
+*.yaml
+*.yml
+!configs/*.yaml
+!configs/*.yml
